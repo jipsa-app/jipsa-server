@@ -8,6 +8,10 @@ group = 'com.jipsa'
 version = '0.0.1-SNAPSHOT'
 description = 'jipsa-server'
 
+springBoot {
+    mainClass = 'com.jipsa.jipsaserver.JipsaServerApplication'
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
