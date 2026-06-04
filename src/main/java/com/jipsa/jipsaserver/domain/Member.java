@@ -28,6 +28,18 @@ public class Member {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "monthly_step")
+    private Integer monthlyStep = 1;
+
+    @Column(name = "jeonse_step")
+    private Integer jeonseStep = 1;
+
+    @Column(name = "sale_step")
+    private Integer saleStep = 1;
+
+    @Column(name = "asset_profile", columnDefinition = "TEXT")
+    private String assetProfile;
+
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
@@ -39,5 +51,17 @@ public class Member {
 
     public void updatePassword(String encodedPassword) {
         this.password = encodedPassword;
+    }
+
+    public void updateGuideStep(String type, int step) {
+        switch (type.toUpperCase()) {
+            case "MONTHLY" -> this.monthlyStep = step;
+            case "JEONSE"  -> this.jeonseStep = step;
+            case "SALE"    -> this.saleStep = step;
+        }
+    }
+
+    public void updateAssetProfile(String assetProfileJson) {
+        this.assetProfile = assetProfileJson;
     }
 }
