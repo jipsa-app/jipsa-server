@@ -95,3 +95,4 @@ http://localhost:8080/swagger-ui/index.html
 
 - Backend: Railway
 - Database: Railway MySQL
+- 배포 URL: https://jipsa-server-production.up.railway.app
