@@ -28,6 +28,9 @@ public class Member {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "age")
+    private Integer age;
+
     @Column(name = "monthly_step")
     private Integer monthlyStep = 1;
 
@@ -51,6 +54,10 @@ public class Member {
 
     public void updatePassword(String encodedPassword) {
         this.password = encodedPassword;
+    }
+
+    public void updateAge(Integer age) {
+        this.age = age;
     }
 
     public void updateGuideStep(String type, int step) {

@@ -20,11 +20,18 @@ public class MemberService {
         return new MemberInfoResponse(
                 member.getNickname(),
                 member.getEmail(),
+                member.getAge(),
                 member.getMonthlyStep() != null ? member.getMonthlyStep() : 1,
                 member.getJeonseStep() != null ? member.getJeonseStep() : 1,
                 member.getSaleStep() != null ? member.getSaleStep() : 1,
                 member.getAssetProfile()
         );
+    }
+
+    public void updateAge(String email, Integer age) {
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        member.updateAge(age);
     }
 
     public void updateGuideStep(String email, String type, int step) {

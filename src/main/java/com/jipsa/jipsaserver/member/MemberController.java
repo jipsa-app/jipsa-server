@@ -19,6 +19,15 @@ public class MemberController {
         return ResponseEntity.ok(memberService.getMe(email));
     }
 
+    @PutMapping("/age")
+    public ResponseEntity<String> updateAge(
+            @AuthenticationPrincipal String email,
+            @RequestBody Map<String, Object> body) {
+        Integer age = (Integer) body.get("age");
+        memberService.updateAge(email, age);
+        return ResponseEntity.ok("나이가 저장되었습니다.");
+    }
+
     @PutMapping("/guide-step")
     public ResponseEntity<String> updateGuideStep(
             @AuthenticationPrincipal String email,
