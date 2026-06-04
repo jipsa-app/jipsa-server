@@ -9,4 +9,5 @@ public interface ChecklistRecordRepository extends JpaRepository<ChecklistRecord
     List<ChecklistRecord> findByMemberId(Long memberId);
     Optional<ChecklistRecord> findByMemberIdAndItemId(Long memberId, String itemId);
     boolean existsByMemberIdAndItemId(Long memberId, String itemId);
+    void deleteByMemberId(Long memberId);
 }

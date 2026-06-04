@@ -32,4 +32,12 @@ public class Member {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
+
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void updatePassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 }
