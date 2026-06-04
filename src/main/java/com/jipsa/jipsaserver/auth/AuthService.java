@@ -19,6 +19,11 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
+    @Transactional(readOnly = true)
+    public boolean checkNickname(String nickname) {
+        return !memberRepository.existsByNickname(nickname);
+    }
+
     public void signup(SignupRequest request) {
         if (memberRepository.existsByEmail(request.getEmail())) {
             throw new IllegalArgumentException("이미 사용 중인 이메일입니다.");

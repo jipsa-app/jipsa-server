@@ -13,6 +13,11 @@ public class AuthController {
 
     private final AuthService authService;
 
+    @GetMapping("/check-nickname")
+    public ResponseEntity<Boolean> checkNickname(@RequestParam String nickname) {
+        return ResponseEntity.ok(authService.checkNickname(nickname));
+    }
+
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody SignupRequest request) {
         authService.signup(request);
